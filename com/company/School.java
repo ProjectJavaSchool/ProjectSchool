@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+//cai nay anh chua coi nha, em sua may cai kia di da
 public class School {
     Scanner scan = new Scanner(System.in);
     List<Student> students = new ArrayList<>();
