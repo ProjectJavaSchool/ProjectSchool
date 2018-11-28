@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
-    //cai nay anh cung chua coi nha
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Student student = new Student();
