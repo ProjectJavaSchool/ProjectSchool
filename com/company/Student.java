@@ -5,13 +5,19 @@ import java.util.Date;
 public class Student extends PersonInSchool {
     String batch;
 
-    void set(String id, String name, Date dob, String email, String phone, String addr, String batch){
-        this.id = id;
-        this.name = name;
-        this.dob = dob;
-        this.email = email;
-        this.phone = phone;
-        this.addr = addr;
+    public Student() {
+    }
+
+    public Student(String id, String name, Date dob, String email, String phone, String addr, String batch) {
+        super(id, name, dob, email, phone, addr);
+        this.batch = batch;
+    }
+
+    public String getBatch() {
+        return batch;
+    }
+
+    public void setBatch(String batch) {
         this.batch = batch;
     }
 }
