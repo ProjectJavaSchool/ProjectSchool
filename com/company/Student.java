@@ -3,7 +3,7 @@ package com.company;
 import java.util.Date;
 
 public class Student extends PersonInSchool {
-    String batch;
+    private String batch;
 
     public Student() {
     }

@@ -3,7 +3,7 @@ package com.company;
 import java.util.Date;
 
 public class Lecturer extends PersonInSchool {
-    String dept;
+    private String dept;
 
     public Lecturer() {
     }
