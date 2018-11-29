@@ -1,33 +1,17 @@
 package com.company;
 
-import org.omg.CORBA.portable.IDLEntity;
-
 import java.util.Date;
 
-//Class nay abstract nha em!!
 public abstract class PersonInSchool {
-//public class PersonInSchool {
-
-    //cac bien cua em phai dung private nhe, neu em de nhu vay thi khong nen.
     private String id;
-    //vi bien nay cua em private nen em can co getter va setter
-    //setter la de em set cai gia tri vao bien do
-    public void setId(String id) {
-        this.id = id;
-    }
-    //getter la de em lay gia tri do ra
-    public String getId() {
-        return this.id;
-    }
+    private String name;
+    private Date dob;
+    private String email;
+    private String phone;
+    private String addr;
 
-    //tuong tu cho may cai duoi nha, ly do tai sao thi em co the google, neu van k hieu thi hoi anh
-    String name;
-    Date dob;
-    String email;
-    String phone;
-    String addr;
-
-    //em can them mot cai constructor nua
+    public PersonInSchool() {
+    }
 
     public PersonInSchool(String id, String name, Date dob, String email, String phone, String addr) {
         this.id = id;
@@ -35,6 +19,54 @@ public abstract class PersonInSchool {
         this.dob = dob;
         this.email = email;
         this.phone = phone;
+        this.addr = addr;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
         this.addr = addr;
     }
 }
