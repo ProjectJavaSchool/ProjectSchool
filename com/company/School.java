@@ -14,144 +14,136 @@ public class School {
 
 // STUDENTS
 
-    void addStudent(Student stud){
+    public void addStudent(Student stud){
         students.add(stud);
     }
 
-    List<Student> viewStudent(){
-        return students;
+    public List<Student> viewStudent(){
+        return this.students;
     }
 
-    List<Student> searchStudent(String name){
+    public List<Student> searchStudent(String name){
         List<Student> searchedStud = new ArrayList<>();
         for (Student s: students){
-            if (s.name.equals(name)){
+            if (s.getName().equals(name)){
                 searchedStud.add(s);
             }
         }
         return searchedStud;
     }
 
-    void deleteStudent(String id){
+    public void deleteStudent(String id){
         for (Student s: students){
-            if (s.id.equals(id)){
+            if (s.getId().equals(id)){
                 students.remove(s);
             }
         }
     }
 
-    void updateStudent(String id, Student stud) throws ParseException {
-        for (Student s: students){
-            if (s.id == id){
+    public void updateStudent(String id, Student stud) throws ParseException {
                 String input;
-                System.out.println(s.id);
+                System.out.println(stud.getId());
                 input = scan.nextLine();
                 if (!input.equals("")){
-                    s.id = input;
+                    stud.setId(input);
                 }
-                System.out.println(s.name);
+                System.out.println(stud.getName());
                 input = scan.nextLine();
                 if (!input.equals("")){
-                    s.name = input;
+                    stud.setName(input);
                 }
-                System.out.println(s.dob);
+                System.out.println(stud.getDob());
                 input = scan.nextLine();
                 Date dob_input = new SimpleDateFormat("dd/MM/yyyy").parse(input);
                 if (!input.equals("")){
-                    s.dob = dob_input;
+                    stud.setDob(dob_input);
                 }
-                System.out.println(s.email);
+                System.out.println(stud.getEmail());
                 input = scan.nextLine();
                 if (!input.equals("")){
-                    s.email = input;
+                    stud.setEmail(input);
                 }
-                System.out.println(s.phone);
+                System.out.println(stud.getPhone());
                 input = scan.nextLine();
                 if (!input.equals("")){
-                    s.phone = input;
+                    stud.setPhone(input);
                 }
-                System.out.println(s.addr);
+                System.out.println(stud.getAddr());
                 input = scan.nextLine();
                 if (!input.equals("")){
-                    s.addr = input;
+                    stud.setAddr(input);
                 }
-                System.out.println(s.batch);
+                System.out.println(stud.getBatch());
                 input = scan.nextLine();
                 if (!input.equals("")){
-                    s.batch = input;
+                    stud.setBatch(input);
                 }
-            }
-        }
     }
 
 // LECTURERS
 
-    void addLecturer(Lecturer lect){
+    public void addLecturer(Lecturer lect){
         lecturers.add(lect);
     }
 
-    List<Lecturer> viewLecturer(){
+    public List<Lecturer> viewLecturer(){
         return lecturers;
     }
 
-    List<Lecturer> searchLecturer(String name){
+    public List<Lecturer> searchLecturer(String name){
         List<Lecturer> searchedLect = new ArrayList<>();
         for (Lecturer l: lecturers){
-            if (l.name.equals(name)){
+            if (l.getName().equals(name)){
                 searchedLect.add(l);
             }
         }
         return searchedLect;
     }
 
-    void deleteLecturer(String id){
+    public void deleteLecturer(String id){
         for (Student s: students){
-            if (s.id == id){
+            if (s.getId().equals(id)){
                 students.remove(s);
             }
         }
     }
 
-    void updateLecturer(String id, Lecturer lect) throws ParseException {
-        for (Lecturer l: lecturers) {
-            if (l.id == id) {
+    public void updateLecturer(String id, Lecturer lect) throws ParseException {
                 String input;
-                System.out.println(l.id);
+                System.out.println(lect.getId());
                 input = scan.nextLine();
                 if (!input.equals("")) {
-                    l.id = input;
+                    lect.setId(input);
                 }
-                System.out.println(l.name);
+                System.out.println(lect.getName());
                 input = scan.nextLine();
                 if (!input.equals("")) {
-                    l.name = input;
+                    lect.setName(input);
                 }
-                System.out.println(l.dob);
+                System.out.println(lect.getDob());
                 input = scan.nextLine();
                 Date dob_input = new SimpleDateFormat("dd/MM/yyyy").parse(input);
                 if (!input.equals("")) {
-                    l.dob = dob_input;
+                    lect.setDob(dob_input);
                 }
-                System.out.println(l.email);
+                System.out.println(lect.getEmail());
                 input = scan.nextLine();
                 if (!input.equals("")) {
-                    l.email = input;
+                    lect.setEmail(input);
                 }
-                System.out.println(l.phone);
+                System.out.println(lect.getPhone());
                 input = scan.nextLine();
                 if (!input.equals("")) {
-                    l.phone = input;
+                    lect.setPhone(input);
                 }
-                System.out.println(l.addr);
+                System.out.println(lect.getAddr());
                 input = scan.nextLine();
                 if (!input.equals("")) {
-                    l.addr = input;
+                    lect.setAddr(input);
                 }
-                System.out.println(l.dept);
+                System.out.println(lect.getDept());
                 if (!input.equals("")) {
-                    l.dept = input;
+                    lect.setDept(input);
                 }
-            }
-        }
     }
 }
