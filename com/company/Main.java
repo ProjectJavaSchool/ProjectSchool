@@ -103,7 +103,7 @@ public class Main {
     private static void viewStudentInfo(Student s) {
         write(ID); writeln(s.getId());
         write(NAME); writeln(s.getName());
-        DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat(DATEFORMAT);
         String dob = dateFormat.format(s.getDob());
         write(DOB); writeln(dob);
         write(EMAIL); writeln(s.getEmail());

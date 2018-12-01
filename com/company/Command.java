@@ -44,6 +44,8 @@ public class Command {
     public static final String BATCH = "Batch: ";
     public static final String DEPARTMENT = "Department: ";
 
+    public static final String DATEFORMAT = "dd/mm/yyyy";
+
     public static void writeln(String content) {
         System.out.println(content);
     }
