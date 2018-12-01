@@ -100,15 +100,13 @@ public class Main {
     }
 
     private static void viewStudentInfo(Student s) {
-        write(ID); writeln(s.getId());
-        write(NAME); writeln(s.getName());
-        DateFormat dateFormat = new SimpleDateFormat(DATEFORMAT);
-        String dob = dateFormat.format(s.getDob());
-        write(DOB); writeln(dob);
-        write(EMAIL); writeln(s.getEmail());
-        write(PHONE); writeln(s.getPhone());
-        write(ADDRESS); writeln(s.getAddr());
-        write(BATCH); writeln(s.getBatch());
+        writeln(ID + s.getId());
+        writeln(NAME + s.getName());
+        writeln(DOB + parseString(s.getDob()));
+        writeln(EMAIL + s.getEmail());
+        writeln(PHONE + s.getPhone());
+        writeln(ADDRESS + s.getAddr());
+        writeln(BATCH + s.getBatch());
         write(BLANK_LINE);
     }
 
@@ -204,15 +202,13 @@ public class Main {
 
     private static void viewLecturerInfo(Lecturer l) {
         skipCurrentLineRead();
-        write(ID); writeln(l.getId());
-        write(NAME); writeln(l.getName());
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String dob = dateFormat.format(l.getDob());
-        writeln(dob);
-        write(EMAIL); writeln(l.getEmail());
-        write(PHONE); writeln(l.getPhone());
-        write(ADDRESS); writeln(l.getAddr());
-        write(DEPARTMENT); writeln(l.getDept());
+        writeln(ID + l.getId());
+        writeln(NAME + l.getName());
+        writeln(DOB + parseString(l.getDob()));
+        writeln(EMAIL + l.getEmail());
+        writeln(PHONE + l.getPhone());
+        writeln(ADDRESS + l.getAddr());
+        writeln(DEPARTMENT + l.getDept());
         write(BLANK_LINE);
     }
 
