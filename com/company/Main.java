@@ -124,6 +124,9 @@ public class Main {
 
     private static void addNewStudent() {
         skipCurrentLineRead();
+        //em để ý mấy cái hàm inputId, inputName đồ, nó hao hao giống nhau hem?
+        //tìm cách viết nó thành một hàm cho anh coi :))
+        //bí thì pm nhé
         String id = inputId();
         String name = inputName();
         Date dob = inputDob();
