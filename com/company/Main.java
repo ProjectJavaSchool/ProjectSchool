@@ -54,7 +54,9 @@ public class Main {
                     case 4: deleteStudents(); break;
                     default: updateStudent(); break;
                 }
-                gotoManageStudentWindow();
+                //Anh vừa phát hiện ra một lỗi nguy hiểm, nếu để như lúc đầu là gotoManageStudentWindow
+                //Nó sẽ bị sai - em cứ thử sẽ thấy - bấm search students sau đó back to main menu sẽ bị lỗi
+                openManageStudentWindow();
             } else {
                 informInvalidNumberInput();
             }
@@ -153,7 +155,7 @@ public class Main {
                     case 4: deleteLecturers(); break;
                     default: updateLecturer(); break;
                 }
-                gotoManageLecturerWindow();
+                openManageLecturerWindow();
             } else {
                 informInvalidNumberInput();
             }
