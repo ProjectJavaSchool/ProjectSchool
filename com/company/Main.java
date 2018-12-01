@@ -75,7 +75,7 @@ public class Main {
     }
 
     private static void updateStudent() throws ParseException {
-        String id = inputId();
+        write(ENTER_ID); String id = input();
         Student student = new Student();
         for (Student s: school.viewStudent()){
             if (s.getId().equals(id)){
@@ -86,12 +86,12 @@ public class Main {
     }
 
     private static void deleteStudents() {
-        String id = inputId();
+        write(ENTER_ID); String id = input();
         school.deleteStudent(id);
     }
 
     private static void searchStudents() {
-        String name = inputName();
+        write(ENTER_NAME); String name = input();
         List<Student> students = school.searchStudent(name);
         viewSearchedStudents(students);
     }
@@ -114,7 +114,7 @@ public class Main {
         write(NAME); writeln(s.getName());
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String dob = dateFormat.format(s.getDob());
-        write(DOB); writeln(dob);
+        writeln(dob);
         write(EMAIL); writeln(s.getEmail());
         write(PHONE); writeln(s.getPhone());
         write(ADDRESS); writeln(s.getAddr());
@@ -127,13 +127,13 @@ public class Main {
         //em để ý mấy cái hàm inputId, inputName đồ, nó hao hao giống nhau hem?
         //tìm cách viết nó thành một hàm cho anh coi :))
         //bí thì pm nhé
-        String id = inputId();
-        String name = inputName();
+        write(ENTER_ID); String id = input();
+        write(ENTER_NAME); String name = input();
         Date dob = inputDob();
-        String email = inputEmail();
-        String phone = inputPhone();
-        String addr = inputAddress();
-        String batch = inputBatch();
+        write(ENTER_EMAIL); String email = input();
+        write(ENTER_PHONE); String phone = input();
+        write(ENTER_ADDRESS); String addr = input();
+        write(ENTER_BATCH); String batch = input();
         Student student = new Student(id, name, dob, email, phone, addr, batch);
         school.addStudent(student);
     }
@@ -142,63 +142,12 @@ public class Main {
         scan.nextLine();
     }
 
-    private static String inputBatch() {
-        write(ENTER_BATCH);
-        try {
-            return scan.nextLine();
-        } catch (InputMismatchException e) {
-            scan.nextLine();
-            return inputBatch();
-        }
-    }
-
-    private static String inputAddress() {
-        write(ENTER_ADDRESS);
-        try {
-            return scan.nextLine();
-        } catch (InputMismatchException e) {
-            scan.nextLine();
-            return inputAddress();
-        }
-    }
-
-    private static String inputPhone() {
-        write(ENTER_PHONE);
-        try {
-            return scan.nextLine();
-        } catch (InputMismatchException e) {
-            scan.nextLine();
-            return inputPhone();
-        }
-    }
-
-    private static String inputEmail() {
-        write(ENTER_EMAIL);
-        try {
-            return scan.nextLine();
-        } catch (InputMismatchException e) {
-            scan.nextLine();
-            return inputEmail();
-        }
-    }
-
     private static Date inputDob() {
         write(ENTER_DOB);
         return new Date();
     }
 
-    private static String inputName() {
-        write(ENTER_NAME);
-        try {
-            return scan.nextLine();
-        } catch (InputMismatchException e) {
-            scan.nextLine();
-            return inputName();
-        }
-    }
-
-    private static String inputId() {
-        write(ENTER_ID);
+    private static String input() {
         try {
             //scan.nextLine là nó scan cái line em đang viết đó
             //Trong trường hợp này, ngay sau khi click là nó scan cả cái line em đang đúng đó - tức là nó scan cái Enter your option: 1 gì đó =))
@@ -206,7 +155,7 @@ public class Main {
             return scan.nextLine();
         } catch (InputMismatchException e) {
             scan.nextLine();
-            return inputId();
+            return input();
         }
     }
 
@@ -228,9 +177,9 @@ public class Main {
                 switch (optionNumber){
                     case 1: addNewLecturer();
                     case 2: viewAllLecturers();
-                    case 3: searchStudents();
-                    case 4: deleteStudents();
-                    default: updateStudent();
+                    case 3: searchLecturers();
+                    case 4: deleteLecturers();
+                    default: updateLecturer();
                 }
                 //tương tự Student
 //                openManageLecturerWindow();
@@ -244,19 +193,65 @@ public class Main {
 
 
 
-    private static void updateLecturer() {
+    private static void updateLecturer() throws ParseException {
+        write(ENTER_ID); String id = input();
+        Lecturer lecturer = new Lecturer();
+        for (Lecturer l: school.viewLecturer()){
+            if (l.getId().equals(id)){
+                lecturer = l;
+            }
+        }
+        school.updateLecturer(id, lecturer);
     }
 
     private static void deleteLecturers() {
+        write(ENTER_ID); String id = input();
+        school.deleteLecturer(id);
     }
 
     private static void searchLecturers() {
+        write(ENTER_NAME); String name = input();
+        List<Lecturer> lecturers = school.searchLecturer(name);
+        viewSearchedLecturer(lecturers);
+    }
+
+    private static void viewSearchedLecturer(List<Lecturer> lecturers) {
+        for (Lecturer l: lecturers){
+            viewLecturerInfo(l);
+        }
     }
 
     private static void viewAllLecturers() {
+        List<Lecturer> lecturers = school.viewLecturer();
+        for (Lecturer l: lecturers){
+            viewLecturerInfo(l);
+        }
+    }
+
+    private static void viewLecturerInfo(Lecturer l) {
+        write(ID); writeln(l.getId());
+        write(NAME); writeln(l.getName());
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String dob = dateFormat.format(l.getDob());
+        writeln(dob);
+        write(EMAIL); writeln(l.getEmail());
+        write(PHONE); writeln(l.getPhone());
+        write(ADDRESS); writeln(l.getAddr());
+        write(DEPARTMENT); writeln(l.getDept());
+        write(BLANK_LINE);
     }
 
     private static void addNewLecturer() {
+        skipCurrentLineRead();
+        write(ENTER_ID); String id = input();
+        write(ENTER_NAME); String name = input();
+        Date dob = inputDob();
+        write(ENTER_EMAIL); String email = input();
+        write(ENTER_PHONE); String phone = input();
+        write(ENTER_ADDRESS); String addr = input();
+        write(ENTER_DEPARTMENT); String dept = input();
+        Lecturer lecturer = new Lecturer(id, name, dob, email, phone, addr, dept);
+        school.addLecturer(lecturer);
     }
 
     private static int getOptionNumber() {
