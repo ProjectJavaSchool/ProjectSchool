@@ -123,6 +123,7 @@ public class Main {
     }
 
     private static void addNewStudent() {
+        skipCurrentLineRead();
         String id = inputId();
         String name = inputName();
         Date dob = inputDob();
@@ -132,6 +133,10 @@ public class Main {
         String batch = inputBatch();
         Student student = new Student(id, name, dob, email, phone, addr, batch);
         school.addStudent(student);
+    }
+
+    private static void skipCurrentLineRead() {
+        scan.nextLine();
     }
 
     private static String inputBatch() {
@@ -192,6 +197,9 @@ public class Main {
     private static String inputId() {
         write(ENTER_ID);
         try {
+            //scan.nextLine là nó scan cái line em đang viết đó
+            //Trong trường hợp này, ngay sau khi click là nó scan cả cái line em đang đúng đó - tức là nó scan cái Enter your option: 1 gì đó =))
+            //trước khi em vào hàm này, scan.nextLine() một lần là được - coi hàm addStudent anh thêm cái hàm skip current line nhé
             return scan.nextLine();
         } catch (InputMismatchException e) {
             scan.nextLine();
