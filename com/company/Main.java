@@ -31,7 +31,7 @@ public class Main {
             optionNumber = getOptionNumber();
             if(optionNumber == 3) break;
             else if(optionNumber > 0 && optionNumber < 3) {
-                if(optionNumber == 1) gotoMangeStudentWindow();
+                if(optionNumber == 1) gotoManageStudentWindow();
                 else gotoManageLecturerWindow();
                 openFirstApplicationWindow();
             }
@@ -39,7 +39,7 @@ public class Main {
         } while(optionNumber != 3);
     }
 
-    private static void gotoMangeStudentWindow() throws ParseException {
+    private static void gotoManageStudentWindow() throws ParseException {
         openManageStudentWindow();
         readManageStudentOption();
     }
@@ -67,7 +67,7 @@ public class Main {
                 //à haha gotoMangeStudent là cái gì cơ =))
 //                openManageStudentWindow();
 //                readManageStudentOption();
-                gotoMangeStudentWindow();
+                gotoManageStudentWindow();
             } else {
                 informInvalidNumberInput();
             }
