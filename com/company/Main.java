@@ -17,11 +17,6 @@ public class Main {
     private static School school = new School();
 
     public static void main(String[] args) throws ParseException {
-//        Student student = new Student("GT53638", "Jason", new Date(), "jason@email.com", "03423454567", "fgfccv", "lala");
-//        Lecturer lecturer = new Lecturer("98375939", "Lily", new Date(), "lily@email.com", "08457293857", "asgler", "lolo");
-//        school.addStudent(student);
-//        school.addLecturer(lecturer);
-
         openFirstApplicationWindow();
         readMainOption();
     }
@@ -50,16 +45,9 @@ public class Main {
         do {
             optionNumber = getOptionNumber();
             if (optionNumber == 6) {
-                //em không cần gọi openFirstAppWindow làm gì nữa, chỉ cần return thôi, vì sau khi return nó sẽ openFirstAppliactionWindow mà?
-                //coi hàm readMainOption ấy - sau khi sau khúc if else optionNumber == 1 các kiểu, có cái openFirstApplicationWindow() rồi đó.
-//                openFirstApplicationWindow();
-//                readMainOption();
-//                break;
                 return;
             } else if (optionNumber > 0 && optionNumber < 6){
                 switch (optionNumber){
-                    //thêm hàm break ở đây nhe em. Cái này là anh thiếu :D
-                    // Nếu em không thêm break, thì sau khi chạy xong case 1 - add new Student
                     case 1: addNewStudent(); break;
                     case 2: viewAllStudents(); break;
                     case 3: searchStudents(); break;
@@ -67,10 +55,6 @@ public class Main {
                     //nó sẽ chạy tiếp cái update student này :)
                     default: updateStudent(); break;
                 }
-                //ủa Thảo ơi sao hai cái này y chang cái gotoManageStudentWindow mà sao k dùng nó luôn, reuse code đi em
-                //à haha gotoMangeStudent là cái gì cơ =))
-//                openManageStudentWindow();
-//                readManageStudentOption();
                 gotoManageStudentWindow();
             } else {
                 informInvalidNumberInput();
@@ -97,7 +81,6 @@ public class Main {
     }
 
     private static void searchStudents() {
-        //chỗ nào mà cần input thì nhớ thêm cái skip current line read này vô :D
         skipCurrentLineRead();
         write(ENTER_NAME); String name = input();
         List<Student> students = school.searchStudent(name);
@@ -132,9 +115,6 @@ public class Main {
 
     private static void addNewStudent() throws ParseException {
         skipCurrentLineRead();
-        //em để ý mấy cái hàm inputId, inputName đồ, nó hao hao giống nhau hem?
-        //tìm cách viết nó thành một hàm cho anh coi :))
-        //bí thì pm nhé
         write(ENTER_ID); String id = input();
         write(ENTER_NAME); String name = input();
         write(ENTER_DOB); Date dob = parseDate(input());
@@ -152,9 +132,6 @@ public class Main {
 
     private static String input() {
         try {
-            //scan.nextLine là nó scan cái line em đang viết đó
-            //Trong trường hợp này, ngay sau khi click là nó scan cả cái line em đang đúng đó - tức là nó scan cái Enter your option: 1 gì đó =))
-            //trước khi em vào hàm này, scan.nextLine() một lần là được - coi hàm addStudent anh thêm cái hàm skip current line nhé
             return scan.nextLine();
         } catch (InputMismatchException e) {
             scan.nextLine();
@@ -174,7 +151,6 @@ public class Main {
         do {
             optionNumber = getOptionNumber();
             if (optionNumber == 6) {
-                //tương tự như bên student ha
                 return;
             } else if (optionNumber > 0 && optionNumber < 6){
                 switch (optionNumber){
@@ -184,9 +160,6 @@ public class Main {
                     case 4: deleteLecturers(); break;
                     default: updateLecturer(); break;
                 }
-                //tương tự Student
-//                openManageLecturerWindow();
-//                readManageLecturerOption();
                 gotoManageLecturerWindow();
             } else {
                 informInvalidNumberInput();
