@@ -64,7 +64,7 @@ public class Main {
 
     private static void updateStudent() throws ParseException {
         skipCurrentLineRead();
-        write(ENTER_ID); String id = input();
+        String id = input(ENTER_ID);
         Student student = new Student();
         for (Student s: school.viewStudent()){
             if (s.getId().equals(id)){
@@ -76,13 +76,13 @@ public class Main {
 
     private static void deleteStudents() {
         skipCurrentLineRead();
-        write(ENTER_ID); String id = input();
+        String id = input(ENTER_ID);
         school.deleteStudent(id);
     }
 
     private static void searchStudents() {
         skipCurrentLineRead();
-        write(ENTER_NAME); String name = input();
+        String name = input(ENTER_NAME);
         List<Student> students = school.searchStudent(name);
         viewSearchedStudents(students);
     }
@@ -115,13 +115,13 @@ public class Main {
 
     private static void addNewStudent() throws ParseException {
         skipCurrentLineRead();
-        write(ENTER_ID); String id = input();
-        write(ENTER_NAME); String name = input();
-        write(ENTER_DOB); Date dob = parseDate(input());
-        write(ENTER_EMAIL); String email = input();
-        write(ENTER_PHONE); String phone = input();
-        write(ENTER_ADDRESS); String addr = input();
-        write(ENTER_BATCH); String batch = input();
+        String id = input(ENTER_ID);
+        String name = input(ENTER_NAME);
+        Date dob = parseDate(input(ENTER_DOB));
+        String email = input(ENTER_EMAIL);
+        String phone = input(ENTER_PHONE);
+        String addr = input(ENTER_ADDRESS);
+        String batch = input(ENTER_BATCH);
         Student student = new Student(id, name, dob, email, phone, addr, batch);
         school.addStudent(student);
     }
@@ -130,13 +130,9 @@ public class Main {
         scan.nextLine();
     }
 
-    private static String input() {
-        try {
-            return scan.nextLine();
-        } catch (InputMismatchException e) {
-            scan.nextLine();
-            return input();
-        }
+    private static String input(String requiredContent) {
+        write(requiredContent);
+        return scan.nextLine();
     }
 
 
@@ -171,7 +167,7 @@ public class Main {
 
     private static void updateLecturer() throws ParseException {
         skipCurrentLineRead();
-        write(ENTER_ID); String id = input();
+        String id = input(ENTER_ID);
         Lecturer lecturer = new Lecturer();
         for (Lecturer l: school.viewLecturer()){
             if (l.getId().equals(id)){
@@ -183,13 +179,13 @@ public class Main {
 
     private static void deleteLecturers() {
         skipCurrentLineRead();
-        write(ENTER_ID); String id = input();
+        String id = input(ENTER_ID);
         school.deleteLecturer(id);
     }
 
     private static void searchLecturers() {
         skipCurrentLineRead();
-        write(ENTER_NAME); String name = input();
+        String name = input(ENTER_NAME);
         List<Lecturer> lecturers = school.searchLecturer(name);
         viewSearchedLecturer(lecturers);
     }
@@ -223,13 +219,13 @@ public class Main {
 
     private static void addNewLecturer() throws ParseException {
         skipCurrentLineRead();
-        write(ENTER_ID); String id = input();
-        write(ENTER_NAME); String name = input();
-        write(ENTER_DOB); Date dob = parseDate(input());
-        write(ENTER_EMAIL); String email = input();
-        write(ENTER_PHONE); String phone = input();
-        write(ENTER_ADDRESS); String addr = input();
-        write(ENTER_DEPARTMENT); String dept = input();
+        String id = input(ENTER_ID);
+        String name = input(ENTER_NAME);
+        Date dob = parseDate(input(ENTER_DOB));
+        String email = input(ENTER_EMAIL);
+        String phone = input(ENTER_PHONE);
+        String addr = input(ENTER_ADDRESS);
+        String dept = input(ENTER_DEPARTMENT);
         Lecturer lecturer = new Lecturer(id, name, dob, email, phone, addr, dept);
         school.addLecturer(lecturer);
     }
