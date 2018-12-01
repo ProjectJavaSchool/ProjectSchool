@@ -47,6 +47,7 @@ public class Main {
             if (optionNumber == 6) {
                 openFirstApplicationWindow();
                 readMainOption();
+                break;
             } else if (optionNumber > 0 && optionNumber < 6){
                 if (optionNumber == 1) {
                     addNewStudent();
