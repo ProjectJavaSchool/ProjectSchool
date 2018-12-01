@@ -6,16 +6,20 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static com.company.Command.*;
+//để sử dụng được GUIController em phải import như thế này, để ý thấy chữ Static chứ!
+// Nếu em không có chữ static nó vẫn sẽ chạy nhé, nhưng ở dưới em phải viết kiểu khác.
+// Muốn biết thì pm anh nói thêm cho!
+import static com.company.cmd.GUIController.*;
 
 public class Main {
     private static Scanner scan = initScanner();
     private static School school = new School();
 
     public static void main(String[] args) throws ParseException {
-        Student student = new Student("GT53638", "Jason", new Date(), "jason@email.com", "03423454567", "fgfccv", "lala");
-        Lecturer lecturer = new Lecturer("98375939", "Lily", new Date(), "lily@email.com", "08457293857", "asgler", "lolo");
-        school.addStudent(student);
-        school.addLecturer(lecturer);
+//        Student student = new Student("GT53638", "Jason", new Date(), "jason@email.com", "03423454567", "fgfccv", "lala");
+//        Lecturer lecturer = new Lecturer("98375939", "Lily", new Date(), "lily@email.com", "08457293857", "asgler", "lolo");
+//        school.addStudent(student);
+//        school.addLecturer(lecturer);
 
         openFirstApplicationWindow();
         readMainOption();
@@ -45,9 +49,12 @@ public class Main {
         do {
             optionNumber = getOptionNumber();
             if (optionNumber == 6) {
-                openFirstApplicationWindow();
-                readMainOption();
-                break;
+                //em không cần gọi openFirstAppWindow làm gì nữa, chỉ cần return thôi, vì sau khi return nó sẽ openFirstAppliactionWindow mà?
+                //coi hàm readMainOption ấy - sau khi sau khúc if else optionNumber == 1 các kiểu, có cái openFirstApplicationWindow() rồi đó.
+//                openFirstApplicationWindow();
+//                readMainOption();
+//                break;
+                return;
             } else if (optionNumber > 0 && optionNumber < 6){
                 if (optionNumber == 1) {
                     addNewStudent();
@@ -201,17 +208,7 @@ public class Main {
         }
     }
 
-    private static void openManageStudentWindow() {
-        writeln(SEPERATOR);
-        writeln(ADD_NEW_STUDENT);
-        writeln(VIEW_ALL_STUDENTS);
-        writeln(SEARCH_STUDENTS);
-        writeln(DELETE_STUDENTS);
-        writeln(UPDATE_STUDENT);
-        writeln(BACK_TO_MAIN_MENU);
-        writeln(SEPERATOR);
-        write(ENTER_YOUR_OPTION);
-    }
+
 
     private static void gotoManageLecturerWindow() throws ParseException {
         openManageLecturerWindow();
@@ -223,8 +220,8 @@ public class Main {
         do {
             optionNumber = getOptionNumber();
             if (optionNumber == 6) {
-                openFirstApplicationWindow();
-                readMainOption();
+                //tương tự như bên student ha
+                return;
             } else if (optionNumber > 0 && optionNumber < 6){
                 if (optionNumber == 1) {
                     addNewLecturer();
@@ -243,16 +240,7 @@ public class Main {
         } while (optionNumber != 6);
     }
 
-    private static void openManageLecturerWindow() {
-        writeln(SEPERATOR);
-        writeln(ADD_NEW_LECTURER);
-        writeln(VIEW_ALL_LECTURERS);
-        writeln(SEARCH_LECTURERS);
-        writeln(DELETE_LECTURERS);
-        writeln(UPDATE_LECTURER);
-        writeln(BACK_TO_MAIN_MENU);
-        write(ENTER_YOUR_OPTION);
-    }
+
 
     private static void updateLecturer() {
     }
@@ -277,20 +265,6 @@ public class Main {
             return -1;
         }
 
-    }
-
-    private static void informInvalidNumberInput() {
-        writeln(NOT_VALID_NUMBER_INPUT);
-        write(ENTER_YOUR_OPTION);
-    }
-
-    private static void openFirstApplicationWindow() {
-        writeln(SEPERATOR);
-        writeln(MANAGE_STUDENTS);
-        writeln(MANAGE_LECTURERS);
-        writeln(EXIT);
-        writeln(SEPERATOR);
-        write(ENTER_YOUR_OPTION);
     }
 
     private static Scanner initScanner() {
