@@ -54,7 +54,7 @@ public class School {
                 }
                 System.out.println(stud.getDob());
                 input = scan.nextLine();
-                Date dob_input = new SimpleDateFormat("dd/MM/yyyy").parse(input);
+                Date dob_input = new SimpleDateFormat("dd/mm/yyyy").parse(input);
                 if (!input.equals("")){
                     stud.setDob(dob_input);
                 }
@@ -122,7 +122,7 @@ public class School {
                 }
                 System.out.println(lect.getDob());
                 input = scan.nextLine();
-                Date dob_input = new SimpleDateFormat("dd/MM/yyyy").parse(input);
+                Date dob_input = new SimpleDateFormat("dd/mm/yyyy").parse(input);
                 if (!input.equals("")) {
                     lect.setDob(dob_input);
                 }

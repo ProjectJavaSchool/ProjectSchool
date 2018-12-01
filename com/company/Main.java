@@ -10,6 +10,7 @@ import static com.company.Command.*;
 // Nếu em không có chữ static nó vẫn sẽ chạy nhé, nhưng ở dưới em phải viết kiểu khác.
 // Muốn biết thì pm anh nói thêm cho!
 import static com.company.cmd.GUIController.*;
+import static com.company.Utils.DateUtils.*;
 
 public class Main {
     private static Scanner scan = initScanner();
@@ -57,11 +58,14 @@ public class Main {
                 return;
             } else if (optionNumber > 0 && optionNumber < 6){
                 switch (optionNumber){
-                    case 1: addNewStudent();
-                    case 2: viewAllStudents();
-                    case 3: searchStudents();
-                    case 4: deleteStudents();
-                    default: updateStudent();
+                    //thêm hàm break ở đây nhe em. Cái này là anh thiếu :D
+                    // Nếu em không thêm break, thì sau khi chạy xong case 1 - add new Student
+                    case 1: addNewStudent(); break;
+                    case 2: viewAllStudents(); break;
+                    case 3: searchStudents(); break;
+                    case 4: deleteStudents(); break;
+                    //nó sẽ chạy tiếp cái update student này :)
+                    default: updateStudent(); break;
                 }
                 //ủa Thảo ơi sao hai cái này y chang cái gotoManageStudentWindow mà sao k dùng nó luôn, reuse code đi em
                 //à haha gotoMangeStudent là cái gì cơ =))
@@ -75,6 +79,7 @@ public class Main {
     }
 
     private static void updateStudent() throws ParseException {
+        skipCurrentLineRead();
         write(ENTER_ID); String id = input();
         Student student = new Student();
         for (Student s: school.viewStudent()){
@@ -86,11 +91,14 @@ public class Main {
     }
 
     private static void deleteStudents() {
+        skipCurrentLineRead();
         write(ENTER_ID); String id = input();
         school.deleteStudent(id);
     }
 
     private static void searchStudents() {
+        //chỗ nào mà cần input thì nhớ thêm cái skip current line read này vô :D
+        skipCurrentLineRead();
         write(ENTER_NAME); String name = input();
         List<Student> students = school.searchStudent(name);
         viewSearchedStudents(students);
@@ -112,9 +120,9 @@ public class Main {
     private static void viewStudentInfo(Student s) {
         write(ID); writeln(s.getId());
         write(NAME); writeln(s.getName());
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
         String dob = dateFormat.format(s.getDob());
-        writeln(dob);
+        write(DOB); writeln(dob);
         write(EMAIL); writeln(s.getEmail());
         write(PHONE); writeln(s.getPhone());
         write(ADDRESS); writeln(s.getAddr());
@@ -122,14 +130,14 @@ public class Main {
         write(BLANK_LINE);
     }
 
-    private static void addNewStudent() {
+    private static void addNewStudent() throws ParseException {
         skipCurrentLineRead();
         //em để ý mấy cái hàm inputId, inputName đồ, nó hao hao giống nhau hem?
         //tìm cách viết nó thành một hàm cho anh coi :))
         //bí thì pm nhé
         write(ENTER_ID); String id = input();
         write(ENTER_NAME); String name = input();
-        Date dob = inputDob();
+        write(ENTER_DOB); Date dob = parseDate(input());
         write(ENTER_EMAIL); String email = input();
         write(ENTER_PHONE); String phone = input();
         write(ENTER_ADDRESS); String addr = input();
@@ -140,11 +148,6 @@ public class Main {
 
     private static void skipCurrentLineRead() {
         scan.nextLine();
-    }
-
-    private static Date inputDob() {
-        write(ENTER_DOB);
-        return new Date();
     }
 
     private static String input() {
@@ -175,11 +178,11 @@ public class Main {
                 return;
             } else if (optionNumber > 0 && optionNumber < 6){
                 switch (optionNumber){
-                    case 1: addNewLecturer();
-                    case 2: viewAllLecturers();
-                    case 3: searchLecturers();
-                    case 4: deleteLecturers();
-                    default: updateLecturer();
+                    case 1: addNewLecturer(); break;
+                    case 2: viewAllLecturers(); break;
+                    case 3: searchLecturers(); break;
+                    case 4: deleteLecturers(); break;
+                    default: updateLecturer(); break;
                 }
                 //tương tự Student
 //                openManageLecturerWindow();
@@ -194,6 +197,7 @@ public class Main {
 
 
     private static void updateLecturer() throws ParseException {
+        skipCurrentLineRead();
         write(ENTER_ID); String id = input();
         Lecturer lecturer = new Lecturer();
         for (Lecturer l: school.viewLecturer()){
@@ -205,11 +209,13 @@ public class Main {
     }
 
     private static void deleteLecturers() {
+        skipCurrentLineRead();
         write(ENTER_ID); String id = input();
         school.deleteLecturer(id);
     }
 
     private static void searchLecturers() {
+        skipCurrentLineRead();
         write(ENTER_NAME); String name = input();
         List<Lecturer> lecturers = school.searchLecturer(name);
         viewSearchedLecturer(lecturers);
@@ -229,6 +235,7 @@ public class Main {
     }
 
     private static void viewLecturerInfo(Lecturer l) {
+        skipCurrentLineRead();
         write(ID); writeln(l.getId());
         write(NAME); writeln(l.getName());
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -241,11 +248,11 @@ public class Main {
         write(BLANK_LINE);
     }
 
-    private static void addNewLecturer() {
+    private static void addNewLecturer() throws ParseException {
         skipCurrentLineRead();
         write(ENTER_ID); String id = input();
         write(ENTER_NAME); String name = input();
-        Date dob = inputDob();
+        write(ENTER_DOB); Date dob = parseDate(input());
         write(ENTER_EMAIL); String email = input();
         write(ENTER_PHONE); String phone = input();
         write(ENTER_ADDRESS); String addr = input();
