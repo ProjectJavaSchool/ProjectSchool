@@ -107,7 +107,7 @@ public class Main {
         writeln(PHONE + s.getPhone());
         writeln(ADDRESS + s.getAddr());
         writeln(BATCH + s.getBatch());
-        write(BLANK_LINE);
+        writeln(EMPTY);
     }
 
     private static void addNewStudent() throws ParseException {
@@ -209,7 +209,7 @@ public class Main {
         writeln(PHONE + l.getPhone());
         writeln(ADDRESS + l.getAddr());
         writeln(DEPARTMENT + l.getDept());
-        write(BLANK_LINE);
+        writeln(EMPTY);
     }
 
     private static void addNewLecturer() throws ParseException {

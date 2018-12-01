@@ -21,7 +21,7 @@ public class Command {
     public static final String DELETE_LECTURERS = "4. Delete lecturers";
     public static final String UPDATE_LECTURER = "5. Update lecturer";
 
-    public static final String BLANK_LINE = "\n";
+    public static final String EMPTY = "";
 
     public static final String NOT_VALID_NUMBER_INPUT = "Your input is not valid. Please input again";
     public static final String ENTER_YOUR_OPTION = "Enter your option: ";
