@@ -63,8 +63,11 @@ public class Main {
                     case 4: deleteStudents();
                     default: updateStudent();
                 }
-                openManageStudentWindow();
-                readManageStudentOption();
+                //ủa Thảo ơi sao hai cái này y chang cái gotoManageStudentWindow mà sao k dùng nó luôn, reuse code đi em
+                //à haha gotoMangeStudent là cái gì cơ =))
+//                openManageStudentWindow();
+//                readManageStudentOption();
+                gotoMangeStudentWindow();
             } else {
                 informInvalidNumberInput();
             }
@@ -218,8 +221,10 @@ public class Main {
                     case 4: deleteStudents();
                     default: updateStudent();
                 }
-                openManageLecturerWindow();
-                readManageLecturerOption();
+                //tương tự Student
+//                openManageLecturerWindow();
+//                readManageLecturerOption();
+                gotoManageLecturerWindow();
             } else {
                 informInvalidNumberInput();
             }
