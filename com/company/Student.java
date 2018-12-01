@@ -2,6 +2,11 @@ package com.company;
 
 import java.util.Date;
 
+import static com.company.Command.*;
+import static com.company.Command.EMPTY;
+import static com.company.Command.writeln;
+import static com.company.Utils.DateUtils.parseString;
+
 public class Student extends PersonInSchool {
     private String batch;
 
@@ -15,4 +20,11 @@ public class Student extends PersonInSchool {
     public String getBatch(){ return this.batch; }
 
     public void setBatch(String batch){ this.batch = batch; }
+
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        writeln(BATCH + this.batch);
+        writeln(EMPTY);
+    }
 }

@@ -2,7 +2,12 @@ package com.company;
 
 import java.util.Date;
 
-public class PersonInSchool {
+import static com.company.Command.*;
+import static com.company.Command.ADDRESS;
+import static com.company.Command.writeln;
+import static com.company.Utils.DateUtils.parseString;
+
+public abstract class PersonInSchool {
     private String id;
     private String name;
     private Date dob;
@@ -67,5 +72,14 @@ public class PersonInSchool {
 
     public String getAddr(){
         return this.addr;
+    }
+
+    public void displayInfo() {
+        writeln(ID + this.id);
+        writeln(NAME + this.name);
+        writeln(DOB + parseString(this.dob));
+        writeln(EMAIL + this.email);
+        writeln(PHONE + this.phone);
+        writeln(ADDRESS + this.addr);
     }
 }

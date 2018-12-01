@@ -91,26 +91,15 @@ public class Main {
 
     private static void viewSearchedStudents(List<Student> students) {
         for (Student s: students){
-            viewStudentInfo(s);
+            s.displayInfo();
         }
     }
 
     private static void viewAllStudents() {
         List<Student> students = school.viewStudent();
         for (Student s: students){
-            viewStudentInfo(s);
+            s.displayInfo();
         }
-    }
-
-    private static void viewStudentInfo(Student s) {
-        writeln(ID + s.getId());
-        writeln(NAME + s.getName());
-        writeln(DOB + parseString(s.getDob()));
-        writeln(EMAIL + s.getEmail());
-        writeln(PHONE + s.getPhone());
-        writeln(ADDRESS + s.getAddr());
-        writeln(BATCH + s.getBatch());
-        writeln(EMPTY);
     }
 
     private static void addNewStudent() throws ParseException {
@@ -199,27 +188,15 @@ public class Main {
 
     private static void viewSearchedLecturer(List<Lecturer> lecturers) {
         for (Lecturer l: lecturers){
-            viewLecturerInfo(l);
+            l.displayInfo();
         }
     }
 
     private static void viewAllLecturers() {
         List<Lecturer> lecturers = school.viewLecturer();
         for (Lecturer l: lecturers){
-            viewLecturerInfo(l);
+            l.displayInfo();
         }
-    }
-
-    private static void viewLecturerInfo(Lecturer l) {
-        skipCurrentLineRead();
-        writeln(ID + l.getId());
-        writeln(NAME + l.getName());
-        writeln(DOB + parseString(l.getDob()));
-        writeln(EMAIL + l.getEmail());
-        writeln(PHONE + l.getPhone());
-        writeln(ADDRESS + l.getAddr());
-        writeln(DEPARTMENT + l.getDept());
-        writeln(EMPTY);
     }
 
     private static void addNewLecturer() throws ParseException {
