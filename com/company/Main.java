@@ -56,27 +56,15 @@ public class Main {
 //                break;
                 return;
             } else if (optionNumber > 0 && optionNumber < 6){
-                if (optionNumber == 1) {
-                    addNewStudent();
-                    openManageStudentWindow();
-                    readManageStudentOption();
-                } else if (optionNumber == 2) {
-                    viewAllStudents();
-                    openManageStudentWindow();
-                    readManageStudentOption();
-                } else if (optionNumber == 3) {
-                    searchStudents();
-                    openManageStudentWindow();
-                    readManageStudentOption();
-                } else if (optionNumber == 4){
-                    deleteStudents();
-                    openManageStudentWindow();
-                    readManageStudentOption();
-                } else {
-                    updateStudent();
-                    openManageStudentWindow();
-                    readManageStudentOption();
+                switch (optionNumber){
+                    case 1: addNewStudent();
+                    case 2: viewAllStudents();
+                    case 3: searchStudents();
+                    case 4: deleteStudents();
+                    default: updateStudent();
                 }
+                openManageStudentWindow();
+                readManageStudentOption();
             } else {
                 informInvalidNumberInput();
             }
@@ -223,17 +211,15 @@ public class Main {
                 //tương tự như bên student ha
                 return;
             } else if (optionNumber > 0 && optionNumber < 6){
-                if (optionNumber == 1) {
-                    addNewLecturer();
-                } else if (optionNumber == 2) {
-                    viewAllLecturers();
-                } else if (optionNumber == 3) {
-                    searchLecturers();
-                } else if (optionNumber == 4){
-                    deleteLecturers();
-                } else {
-                    updateLecturer();
+                switch (optionNumber){
+                    case 1: addNewLecturer();
+                    case 2: viewAllLecturers();
+                    case 3: searchStudents();
+                    case 4: deleteStudents();
+                    default: updateStudent();
                 }
+                openManageLecturerWindow();
+                readManageLecturerOption();
             } else {
                 informInvalidNumberInput();
             }
