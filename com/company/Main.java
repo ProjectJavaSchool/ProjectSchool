@@ -52,7 +52,6 @@ public class Main {
                     case 2: viewAllStudents(); break;
                     case 3: searchStudents(); break;
                     case 4: deleteStudents(); break;
-                    //nó sẽ chạy tiếp cái update student này :)
                     default: updateStudent(); break;
                 }
                 gotoManageStudentWindow();

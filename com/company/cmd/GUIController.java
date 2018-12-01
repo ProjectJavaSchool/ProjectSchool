@@ -4,7 +4,6 @@ import static com.company.Command.*;
 import static com.company.Command.ENTER_YOUR_OPTION;
 
 public class GUIController {
-    //anh bắt đầu thấy Main của mình nó cồng kềnh rồi, anh refactor, chuyển mấy cái này vào Class GUIController nhé, sau này có gọi gì về Display lên GUI mà dài dòng, em hãy viết ở đây
     public static void openManageStudentWindow() {
         writeln(SEPERATOR);
         writeln(ADD_NEW_STUDENT);
@@ -25,6 +24,7 @@ public class GUIController {
         writeln(DELETE_LECTURERS);
         writeln(UPDATE_LECTURER);
         writeln(BACK_TO_MAIN_MENU);
+        writeln(SEPERATOR);
         write(ENTER_YOUR_OPTION);
     }
 
