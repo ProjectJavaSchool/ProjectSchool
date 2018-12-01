@@ -3,9 +3,7 @@ package com.company;
 import com.company.Validators.ValidateType;
 import com.company.Validators.Validator;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static com.company.Command.*;
@@ -66,7 +64,7 @@ public class Main {
 
     private static void updateStudent() throws ParseException {
         skipCurrentLineRead();
-        String id = input(ENTER_ID);
+        String id = input(ENTER_ID, NO_VALIDATE_TYPE);
         Student student = new Student();
         for (Student s: school.viewStudent()){
             if (s.getId().equals(id)){
@@ -78,13 +76,13 @@ public class Main {
 
     private static void deleteStudents() {
         skipCurrentLineRead();
-        String id = input(ENTER_ID);
+        String id = input(ENTER_ID, NO_VALIDATE_TYPE);
         school.deleteStudent(id);
     }
 
     private static void searchStudents() {
         skipCurrentLineRead();
-        String name = input(ENTER_NAME);
+        String name = input(ENTER_NAME, NO_VALIDATE_TYPE);
         List<Student> students = school.searchStudent(name);
         viewSearchedStudents(students);
     }
@@ -105,23 +103,18 @@ public class Main {
     private static void addNewStudent() throws ParseException {
         skipCurrentLineRead();
         String id = input(ENTER_ID, STUDENT_ID_VALIDATE_TYPE);
-        String name = input(ENTER_NAME);
-        Date dob = parseDate(input(ENTER_DOB));
-        String email = input(ENTER_EMAIL);
-        String phone = input(ENTER_PHONE);
-        String addr = input(ENTER_ADDRESS);
-        String batch = input(ENTER_BATCH);
+        String name = input(ENTER_NAME, NO_VALIDATE_TYPE);
+        Date dob = parseDate(input(ENTER_DOB, DATE_VALIDATE_TYPE));
+        String email = input(ENTER_EMAIL, EMAIL_VALIDATE_TYPE);
+        String phone = input(ENTER_PHONE, PHONE_VALIDATE_TYPE);
+        String addr = input(ENTER_ADDRESS, NO_VALIDATE_TYPE);
+        String batch = input(ENTER_BATCH, NO_VALIDATE_TYPE);
         Student student = new Student(id, name, dob, email, phone, addr, batch);
         school.addStudent(student);
     }
 
     private static void skipCurrentLineRead() {
         scan.nextLine();
-    }
-
-    private static String input(String requiredContent) {
-        write(requiredContent);
-        return scan.nextLine();
     }
 
     private static String input(String requiredContent, ValidateType type) {
@@ -163,7 +156,7 @@ public class Main {
 
     private static void updateLecturer() throws ParseException {
         skipCurrentLineRead();
-        String id = input(ENTER_ID);
+        String id = input(ENTER_ID, NO_VALIDATE_TYPE);
         Lecturer lecturer = new Lecturer();
         for (Lecturer l: school.viewLecturer()){
             if (l.getId().equals(id)){
@@ -175,13 +168,13 @@ public class Main {
 
     private static void deleteLecturers() {
         skipCurrentLineRead();
-        String id = input(ENTER_ID);
+        String id = input(ENTER_ID, NO_VALIDATE_TYPE);
         school.deleteLecturer(id);
     }
 
     private static void searchLecturers() {
         skipCurrentLineRead();
-        String name = input(ENTER_NAME);
+        String name = input(ENTER_NAME, NO_VALIDATE_TYPE);
         List<Lecturer> lecturers = school.searchLecturer(name);
         viewSearchedLecturer(lecturers);
     }
@@ -201,13 +194,13 @@ public class Main {
 
     private static void addNewLecturer() throws ParseException {
         skipCurrentLineRead();
-        String id = input(ENTER_ID);
-        String name = input(ENTER_NAME);
-        Date dob = parseDate(input(ENTER_DOB));
-        String email = input(ENTER_EMAIL);
-        String phone = input(ENTER_PHONE);
-        String addr = input(ENTER_ADDRESS);
-        String dept = input(ENTER_DEPARTMENT);
+        String id = input(ENTER_ID, LECTURER_ID_VALIDATE_TYPE);
+        String name = input(ENTER_NAME, NO_VALIDATE_TYPE);
+        Date dob = parseDate(input(ENTER_DOB, DATE_VALIDATE_TYPE));
+        String email = input(ENTER_EMAIL, EMAIL_VALIDATE_TYPE);
+        String phone = input(ENTER_PHONE, PHONE_VALIDATE_TYPE);
+        String addr = input(ENTER_ADDRESS, NO_VALIDATE_TYPE);
+        String dept = input(ENTER_DEPARTMENT, NO_VALIDATE_TYPE);
         Lecturer lecturer = new Lecturer(id, name, dob, email, phone, addr, dept);
         school.addLecturer(lecturer);
     }
