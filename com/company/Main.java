@@ -1,14 +1,15 @@
 package com.company;
 
+import com.company.Validators.ValidateType;
+import com.company.Validators.Validator;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static com.company.Command.*;
-//để sử dụng được GUIController em phải import như thế này, để ý thấy chữ Static chứ!
-// Nếu em không có chữ static nó vẫn sẽ chạy nhé, nhưng ở dưới em phải viết kiểu khác.
-// Muốn biết thì pm anh nói thêm cho!
+import static com.company.Validators.ValidateType.*;
 import static com.company.cmd.GUIController.*;
 import static com.company.Utils.DateUtils.*;
 
@@ -114,7 +115,7 @@ public class Main {
 
     private static void addNewStudent() throws ParseException {
         skipCurrentLineRead();
-        String id = input(ENTER_ID);
+        String id = input(ENTER_ID, STUDENT_ID_VALIDATE_TYPE);
         String name = input(ENTER_NAME);
         Date dob = parseDate(input(ENTER_DOB));
         String email = input(ENTER_EMAIL);
@@ -134,7 +135,14 @@ public class Main {
         return scan.nextLine();
     }
 
-
+    private static String input(String requiredContent, ValidateType type) {
+        String input;
+        do {
+            write(requiredContent);
+            input = scan.nextLine();
+        } while(!Validator.isSuccessfullyValidated(input, type));
+        return input;
+    }
 
     private static void gotoManageLecturerWindow() throws ParseException {
         openManageLecturerWindow();
