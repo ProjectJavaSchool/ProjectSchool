@@ -75,11 +75,11 @@ public abstract class PersonInSchool {
     }
 
     public void displayInfo() {
-        writeln(ID + this.id);
-        writeln(NAME + this.name);
-        writeln(DOB + parseString(this.dob));
-        writeln(EMAIL + this.email);
-        writeln(PHONE + this.phone);
-        writeln(ADDRESS + this.addr);
+        write(this.id + COLUMN_SEPERATOR);
+        write(this.name + COLUMN_SEPERATOR);
+        write(parseString(this.dob) + COLUMN_SEPERATOR);
+        write(this.email + COLUMN_SEPERATOR);
+        write(this.phone + COLUMN_SEPERATOR);
+        write(this.addr + COLUMN_SEPERATOR);
     }
 }

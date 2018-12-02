@@ -53,8 +53,6 @@ public class Main {
                     case 4: deleteStudents(); break;
                     default: updateStudent(); break;
                 }
-                //Anh vừa phát hiện ra một lỗi nguy hiểm, nếu để như lúc đầu là gotoManageStudentWindow
-                //Nó sẽ bị sai - em cứ thử sẽ thấy - bấm search students sau đó back to main menu sẽ bị lỗi
                 openManageStudentWindow();
             } else {
                 informInvalidNumberInput();
@@ -66,24 +64,40 @@ public class Main {
         skipCurrentLineRead();
         String id = input(ENTER_ID, NO_VALIDATE_TYPE);
         Student student = new Student();
+        if (!isExistedStudentID(id)){
+            writeln(ID_DOES_NOT_EXIST);
+            return;
+        }
         for (Student s: school.viewStudent()){
             if (s.getId().equals(id)){
                 student = s;
+                break;
             }
         }
         school.updateStudent(id, student);
+        writeln(STUDENTS_UPDATED_INFO);
+        student.displayInfo();
     }
 
     private static void deleteStudents() {
         skipCurrentLineRead();
         String id = input(ENTER_ID, NO_VALIDATE_TYPE);
+        if (!isExistedStudentID(id)){
+            writeln(ID_DOES_NOT_EXIST);
+            return;
+        }
         school.deleteStudent(id);
+        writeln(STUDENTS_DELETED);
     }
 
     private static void searchStudents() {
         skipCurrentLineRead();
         String name = input(ENTER_NAME, NO_VALIDATE_TYPE);
         List<Student> students = school.searchStudent(name);
+        if (students.size()==0){
+            writeln(NO_SEARCHED_STUDENTS);
+            return;
+        }
         viewSearchedStudents(students);
     }
 
@@ -102,8 +116,15 @@ public class Main {
 
     private static void addNewStudent() throws ParseException {
         skipCurrentLineRead();
-        String id = input(ENTER_ID, STUDENT_ID_VALIDATE_TYPE);
-        String name = input(ENTER_NAME, NO_VALIDATE_TYPE);
+        String id = "";
+        while (true){
+            id = input(ENTER_ID, STUDENT_ID_VALIDATE_TYPE);
+            if (!isExistedStudentID(id)){
+                break;
+            }
+            writeln(ID_EXISTS);
+        }
+        String name = input(ENTER_NAME, NAME_VALIDATE_TYPE);
         Date dob = parseDate(input(ENTER_DOB, DATE_VALIDATE_TYPE));
         String email = input(ENTER_EMAIL, EMAIL_VALIDATE_TYPE);
         String phone = input(ENTER_PHONE, PHONE_VALIDATE_TYPE);
@@ -111,6 +132,7 @@ public class Main {
         String batch = input(ENTER_BATCH, NO_VALIDATE_TYPE);
         Student student = new Student(id, name, dob, email, phone, addr, batch);
         school.addStudent(student);
+        writeln(STUDENT_ADDED);
     }
 
     private static void skipCurrentLineRead() {
@@ -122,6 +144,9 @@ public class Main {
         do {
             write(requiredContent);
             input = scan.nextLine();
+            if (type.equals(NO_VALIDATE_TYPE)) {
+                return input;
+            }
         } while(!Validator.isSuccessfullyValidated(input, type));
         return input;
     }
@@ -158,24 +183,39 @@ public class Main {
         skipCurrentLineRead();
         String id = input(ENTER_ID, NO_VALIDATE_TYPE);
         Lecturer lecturer = new Lecturer();
+        if (!isExistedLecturerID(id)){
+            writeln(ID_DOES_NOT_EXIST);
+            return;
+        }
         for (Lecturer l: school.viewLecturer()){
             if (l.getId().equals(id)){
                 lecturer = l;
             }
         }
         school.updateLecturer(id, lecturer);
+        writeln(LECTURERS_UPDATED_INFO);
+        lecturer.displayInfo();
     }
 
     private static void deleteLecturers() {
         skipCurrentLineRead();
         String id = input(ENTER_ID, NO_VALIDATE_TYPE);
+        if (!isExistedLecturerID(id)){
+            writeln(ID_DOES_NOT_EXIST);
+            return;
+        }
         school.deleteLecturer(id);
+        writeln(LECTURERS_DELETED);
     }
 
     private static void searchLecturers() {
         skipCurrentLineRead();
         String name = input(ENTER_NAME, NO_VALIDATE_TYPE);
         List<Lecturer> lecturers = school.searchLecturer(name);
+        if (lecturers.size()==0){
+            writeln(NO_SEARCHED_LECTURERS);
+            return;
+        }
         viewSearchedLecturer(lecturers);
     }
 
@@ -194,8 +234,15 @@ public class Main {
 
     private static void addNewLecturer() throws ParseException {
         skipCurrentLineRead();
-        String id = input(ENTER_ID, LECTURER_ID_VALIDATE_TYPE);
-        String name = input(ENTER_NAME, NO_VALIDATE_TYPE);
+        String id = "";
+        while (true){
+            id = input(ENTER_ID, LECTURER_ID_VALIDATE_TYPE);
+            if (!isExistedLecturerID(id)){
+                break;
+            }
+            writeln(ID_EXISTS);
+        }
+        String name = input(ENTER_NAME, NAME_VALIDATE_TYPE);
         Date dob = parseDate(input(ENTER_DOB, DATE_VALIDATE_TYPE));
         String email = input(ENTER_EMAIL, EMAIL_VALIDATE_TYPE);
         String phone = input(ENTER_PHONE, PHONE_VALIDATE_TYPE);
@@ -203,6 +250,7 @@ public class Main {
         String dept = input(ENTER_DEPARTMENT, NO_VALIDATE_TYPE);
         Lecturer lecturer = new Lecturer(id, name, dob, email, phone, addr, dept);
         school.addLecturer(lecturer);
+        writeln(LECTURER_ADDED);
     }
 
     private static int getOptionNumber() {
@@ -212,7 +260,24 @@ public class Main {
             scan.nextLine();
             return -1;
         }
+    }
 
+    private static boolean isExistedStudentID(String id){
+        for (Student s: school.students){
+            if (id.equals(s.getId())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isExistedLecturerID(String id){
+        for (Lecturer l: school.lecturers){
+            if (id.equals(l.getId())){
+                return true;
+            }
+        }
+        return false;
     }
 
     private static Scanner initScanner() {

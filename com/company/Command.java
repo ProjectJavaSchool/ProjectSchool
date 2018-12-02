@@ -1,9 +1,8 @@
 package com.company;
 
-import java.net.PortUnreachableException;
-
 public class Command {
     public static final String SEPERATOR = "===================================";
+    public static final String COLUMN_SEPERATOR = " | ";
     public static final String MANAGE_STUDENTS = "1. Manage Students";
     public static final String MANAGE_LECTURERS = "2. Manage Lecturers";
     public static final String EXIT = "3. Exit";
@@ -23,8 +22,18 @@ public class Command {
 
     public static final String EMPTY = "";
 
-    public static final String NOT_VALID_NUMBER_INPUT = "Your input is not valid. Please input again";
+    public static final String NOT_VALID_NUMBER_INPUT = "Your input is not valid. Please input again.";
     public static final String ENTER_YOUR_OPTION = "Enter your option: ";
+    public static final String ID_DOES_NOT_EXIST = "The id does not exist.";
+    public static final String ID_EXISTS = "The id has already existed.";
+    public static final String NO_SEARCHED_STUDENTS = "There is no such students with the name input.";
+    public static final String NO_SEARCHED_LECTURERS = "There is no such lecturers with the name input.";
+    public static final String STUDENT_ADDED = "New student has been added.";
+    public static final String LECTURER_ADDED = "New lecturer has been added.";
+    public static final String STUDENTS_DELETED = "Student(s) has (have) been deleted.";
+    public static final String LECTURERS_DELETED = "Lecturer(s) has (have) been deleted.";
+    public static final String STUDENTS_UPDATED_INFO = "Student's updated information: ";
+    public static final String LECTURERS_UPDATED_INFO = "Lecturer's updated information: ";
 
     public static final String ENTER_ID = "Enter the id: ";
     public static final String ENTER_NAME = "Enter the name: ";

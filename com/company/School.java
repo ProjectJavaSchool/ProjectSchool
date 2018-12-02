@@ -1,11 +1,13 @@
 package com.company;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+
+import static com.company.Command.*;
+import static com.company.Command.writeln;
+import static com.company.Utils.DateUtils.*;
 
 public class School {
     Scanner scan = new Scanner(System.in);
@@ -38,42 +40,42 @@ public class School {
                 students.remove(s);
             }
         }
+
     }
 
     public void updateStudent(String id, Student stud) throws ParseException {
                 String input;
-                System.out.println(stud.getId());
+                writeln(ID + stud.getId());
                 input = scan.nextLine();
                 if (!input.equals("")){
                     stud.setId(input);
                 }
-                System.out.println(stud.getName());
+                writeln(NAME + stud.getName());
                 input = scan.nextLine();
                 if (!input.equals("")){
                     stud.setName(input);
                 }
-                System.out.println(stud.getDob());
+                writeln(DOB + parseString(stud.getDob()));
                 input = scan.nextLine();
-                Date dob_input = new SimpleDateFormat("dd/mm/yyyy").parse(input);
                 if (!input.equals("")){
-                    stud.setDob(dob_input);
+                    stud.setDob(parseDate(input));
                 }
-                System.out.println(stud.getEmail());
+                writeln(EMAIL + stud.getEmail());
                 input = scan.nextLine();
                 if (!input.equals("")){
                     stud.setEmail(input);
                 }
-                System.out.println(stud.getPhone());
+                writeln(PHONE + stud.getPhone());
                 input = scan.nextLine();
                 if (!input.equals("")){
                     stud.setPhone(input);
                 }
-                System.out.println(stud.getAddr());
+                writeln(ADDRESS + stud.getAddr());
                 input = scan.nextLine();
                 if (!input.equals("")){
                     stud.setAddr(input);
                 }
-                System.out.println(stud.getBatch());
+                writeln(BATCH + stud.getBatch());
                 input = scan.nextLine();
                 if (!input.equals("")){
                     stud.setBatch(input);
@@ -101,47 +103,46 @@ public class School {
     }
 
     public void deleteLecturer(String id){
-        for (Student s: students){
-            if (s.getId().equals(id)){
-                students.remove(s);
+        for (Lecturer l: lecturers){
+            if (l.getId().equals(id)){
+                lecturers.remove(l);
             }
         }
     }
 
     public void updateLecturer(String id, Lecturer lect) throws ParseException {
                 String input;
-                System.out.println(lect.getId());
+                writeln(ID + lect.getId());
                 input = scan.nextLine();
                 if (!input.equals("")) {
                     lect.setId(input);
                 }
-                System.out.println(lect.getName());
+                writeln(NAME + lect.getName());
                 input = scan.nextLine();
                 if (!input.equals("")) {
                     lect.setName(input);
                 }
-                System.out.println(lect.getDob());
+                writeln(DOB + parseString(lect.getDob()));
                 input = scan.nextLine();
-                Date dob_input = new SimpleDateFormat("dd/mm/yyyy").parse(input);
                 if (!input.equals("")) {
-                    lect.setDob(dob_input);
+                    lect.setDob(parseDate(input));
                 }
-                System.out.println(lect.getEmail());
+                writeln(EMAIL + lect.getEmail());
                 input = scan.nextLine();
                 if (!input.equals("")) {
                     lect.setEmail(input);
                 }
-                System.out.println(lect.getPhone());
+                writeln(PHONE + lect.getPhone());
                 input = scan.nextLine();
                 if (!input.equals("")) {
                     lect.setPhone(input);
                 }
-                System.out.println(lect.getAddr());
+                writeln(ADDRESS + lect.getAddr());
                 input = scan.nextLine();
                 if (!input.equals("")) {
                     lect.setAddr(input);
                 }
-                System.out.println(lect.getDept());
+                writeln(DEPARTMENT + lect.getDept());
                 if (!input.equals("")) {
                     lect.setDept(input);
                 }

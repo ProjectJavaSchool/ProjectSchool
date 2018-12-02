@@ -24,7 +24,6 @@ public class Lecturer extends PersonInSchool {
     @Override
     public void displayInfo() {
         super.displayInfo();
-        writeln(DEPARTMENT + this.dept);
-        writeln(EMPTY);
+        writeln(this.dept);
     }
 }

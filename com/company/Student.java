@@ -24,7 +24,6 @@ public class Student extends PersonInSchool {
     @Override
     public void displayInfo() {
         super.displayInfo();
-        writeln(BATCH + this.batch);
-        writeln(EMPTY);
+        writeln(this.batch);
     }
 }
