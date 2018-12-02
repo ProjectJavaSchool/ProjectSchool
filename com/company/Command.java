@@ -30,8 +30,8 @@ public class Command {
     public static final String NO_SEARCHED_LECTURERS = "There is no such lecturers with the name input.";
     public static final String STUDENT_ADDED = "New student has been added.";
     public static final String LECTURER_ADDED = "New lecturer has been added.";
-    public static final String STUDENTS_DELETED = "Student(s) has (have) been deleted.";
-    public static final String LECTURERS_DELETED = "Lecturer(s) has (have) been deleted.";
+    public static final String STUDENTS_DELETED = "Student has been deleted.";
+    public static final String LECTURERS_DELETED = "Lecturer has been deleted.";
     public static final String STUDENTS_UPDATED_INFO = "Student's updated information: ";
     public static final String LECTURERS_UPDATED_INFO = "Lecturer's updated information: ";
 
